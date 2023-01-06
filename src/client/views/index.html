@@ -2,11 +2,60 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travel App</title>
   </head>
   <body>
-    <p id="title">Travel App</p>
-
+    <main id="main-layout">
+      <section id="travel-form">
+        <h1 id="title">Travel Planner</h1>
+        <form id="form-container">
+          <label class="form-label" for="location"> Travel Location </label>
+          <input class="form-input" type="text" name="location" id="location" />
+          <label class="form-label" for="start-date"> Start Date </label>
+          <input
+            class="form-input"
+            type="date"
+            name="start-date"
+            id="start-date"
+          />
+          <label class="form-label" for="end-date"> End Date </label>
+          <input class="form-input" type="date" name="end-date" id="end-date" />
+          <button type="submit" name="submit" id="submit">Add Trip</button>
+        </form>
+      </section>
+      <section id="travel-plan-cards">
+        <div id="card-container">
+          <div class="card">
+            <img class="card-pin" src="../images/pushpin.png" />
+            <img class="card-image" src="" />
+            <div class="card-info">
+              <h2 class="card-title">Title</h2>
+              <p class="card-status card-status--not-started">Not Started</p>
+            </div>
+            <div class="card-weather-info">Weather Info</div>
+          </div>
+          <div class="card">
+            <img class="card-pin" src="../images/pushpin.png" />
+            <img class="card-image" src="" />
+            <div class="card-info">
+              <h2 class="card-title">Title</h2>
+              <p class="card-status card-status--in-progress">In Progress</p>
+            </div>
+            <div class="card-weather-info">Weather Info</div>
+          </div>
+          <div class="card">
+            <img class="card-pin" src="../images/pushpin.png" />
+            <img class="card-image" src="" />
+            <div class="card-info">
+              <h2 class="card-title">Title</h2>
+              <p class="card-status card-status--complete">Complete</p>
+            </div>
+            <div class="card-weather-info">Weather Info</div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!--<script>
       // Check that service workers are supported
