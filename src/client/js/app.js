@@ -22,6 +22,7 @@ function handleUI() {
     cardContainer.innerHTML = "";
     const documentFragment = document.createDocumentFragment();
     for (const plan of data) {
+
       // create all needed elements
       let cardDiv = document.createElement("div");
       let cardPinImage = document.createElement("img");
@@ -72,8 +73,8 @@ function handleUI() {
       // add info
       cardTitle.innerHTML = plan.city + ", " + plan.country;
       cardMinTemp.innerHTML = "Min Temp: " + plan.minTemp;
-        cardMaxTemp.innerHTML = "Max Temp: " + plan.maxTemp;
-        cardDuration.innerHTML = plan.duration +" Days from '"+ plan.startDate + "' To '" + plan.endDate + "'";
+      cardMaxTemp.innerHTML = "Max Temp: " + plan.maxTemp;
+      cardDuration.innerHTML = plan.duration + " Days from '" + plan.startDate + "' To '" + plan.endDate + "'";
 
       // add the elements to thier parents
       cardInfo.appendChild(cardTitle);
@@ -97,13 +98,16 @@ function addTravelPlan(event) {
   let location = document.getElementById("location").value;
   let startDate = document.getElementById("start-date").value;
   let endDate = document.getElementById("end-date").value;
+
   // validate user input
   if (location.trim() != "" && startDate.trim() != "" && endDate.trim() != "") {
     if (new Date(endDate) < new Date(startDate)) {
       alert("Please make sure that end date is greater than start Date");
     } else {
+      // calculate the trip duration
       let tripDuration = calculateTripDuration(startDate, endDate);
 
+      // define the empty object to be filled
       let tripObject = {
         country: "",
         city: "",
@@ -115,6 +119,7 @@ function addTravelPlan(event) {
         duration: tripDuration,
       };
 
+      // get the geo info
       getGeoInfo(location).then((data) => {
         if (data.geonames.length > 0) {
           // get the needed data from the response
@@ -128,6 +133,7 @@ function addTravelPlan(event) {
           tripObject.country = countryName;
           tripObject.city = city;
 
+          // get the weather info
           getWeatherInfo(lat, lng, countryCode, startDate).then((data) => {
             // get the needed data from the response
             let minTemp = data.app_min_temp;
@@ -137,9 +143,14 @@ function addTravelPlan(event) {
             tripObject.minTemp = minTemp;
             tripObject.maxTemp = maxTemp;
 
+            // get an appropriate image
             getImage(tripObject.city, tripObject.country).then((data) => {
               tripObject.image = data;
+
+              // add the new trip to the server
               postTravelPlan("/addTravelPlan", tripObject);
+
+              // update the ui
               handleUI();
             });
           });
@@ -155,10 +166,10 @@ function addTravelPlan(event) {
 
 // calculate the trip duration
 const calculateTripDuration = (startDate, endDate) => {
-    let tripDuration = new Date(endDate) - new Date(startDate);
-    tripDuration = tripDuration / (1000 * 60 * 60 * 24) + 1;
-    return tripDuration;
-}
+  let tripDuration = new Date(endDate) - new Date(startDate);
+  tripDuration = tripDuration / (1000 * 60 * 60 * 24) + 1;
+  return tripDuration;
+};
 
 // get the country, lat, and long of the travel location
 const getGeoInfo = async (location) => {
@@ -250,12 +261,13 @@ const getTravelPlans = async (url) => {
 
 // get the travel plans from the server
 const getAPIKeys = async (url) => {
-    const res = await fetch(url);
-    try {
-      const data = await res.json();
-      keys = data;
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
+  const res = await fetch(url);
+  try {
+    const data = await res.json();
+    keys = data;
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
 export { handleUI, addTravelPlan, getGeoInfo, calculateTripDuration };

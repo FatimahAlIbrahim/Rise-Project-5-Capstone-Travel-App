@@ -7,10 +7,10 @@ var path = require("path");
 const express = require("express");
 
 var api = {
-    geoname_key: process.env.GEONAME_KEY,
-    weather_key: process.env.WEATHER_KEY,
-    image_key: process.env.IMAGE_KEY
-  };
+  geoname_key: process.env.GEONAME_KEY,
+  weather_key: process.env.WEATHER_KEY,
+  image_key: process.env.IMAGE_KEY,
+};
 
 const app = express();
 
@@ -32,8 +32,8 @@ app.listen(8080, function () {
   console.log("Example app listening on port 8080!");
 });
 
-app.get('/apiKey', function (req, res) {
-    res.send(api)
+app.get("/apiKey", function (req, res) {
+  res.send(api);
 });
 
 // Get routes
@@ -55,19 +55,15 @@ app.post("/addTravelPlan", (req, res) => {
 const sortByDate = (a, b) => {
   if (new Date(a.startDate) < new Date(b.startDate)) {
     return 1;
-  }
-  else if (new Date(a.startDate) > new Date(b.startDate)) {
+  } else if (new Date(a.startDate) > new Date(b.startDate)) {
     return -1;
-  }
-  else {
+  } else {
     if (new Date(a.endDate) < new Date(b.endDate)) {
-        return 1;
-      }
-      else if (new Date(a.endDate) > new Date(b.endDate)) {
-        return -1;
-      }
-      else {
-        return 0;
-      } 
+      return 1;
+    } else if (new Date(a.endDate) > new Date(b.endDate)) {
+      return -1;
+    } else {
+      return 0;
+    }
   }
 };
