@@ -149,7 +149,10 @@ function addTravelPlan(event) {
 
               // add the new trip to the server
               postTravelPlan("/addTravelPlan", tripObject);
-
+              // empty the inputs
+              document.getElementById("location").value = "";
+              document.getElementById("start-date").value = "";
+              document.getElementById("end-date").value = "";
               // update the ui
               handleUI();
             });
