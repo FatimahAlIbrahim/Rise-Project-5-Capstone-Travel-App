@@ -1,166 +1,235 @@
 body {
-    background-color: rgb(106, 75, 53);
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  background-color: rgb(106, 75, 53);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 #main-layout {
-    display: grid;
-    grid-template-areas: 
+  display: grid;
+  grid-template-areas:
     "form"
     "cards";
-    grid-template-rows: auto auto;
-    gap: 1em 0;
-    margin: 1em 1em;
+  grid-template-rows: auto auto;
+  gap: 1em 0;
+  margin: 1em 1em;
 }
 
 /* form section */
 #travel-form {
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0.5em 0.5em 1em rgb(125, 64, 64);
-    border-radius: 0.25em;
-    grid-area: form;
-    padding: 0.5em;
-    border-top: dashed rgb(130, 77, 77) 0.2em;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0.5em 0.5em 1em rgb(125, 64, 64);
+  border-radius: 0.25em;
+  grid-area: form;
+  padding: 0.5em;
+  border-top: dashed rgb(130, 77, 77) 0.2em;
 }
 
 #title {
-    color: rgb(130, 77, 77);
-    font-size: 2em;
-    border-bottom: solid rgb(125, 64, 64) 0.05em;
-    font-style: italic;
-    margin-bottom: 0.5em;
+  color: rgb(130, 77, 77);
+  font-size: 2em;
+  border-bottom: solid rgb(125, 64, 64) 0.05em;
+  font-style: italic;
+  margin-bottom: 0.5em;
 }
 
-#form-container{
-    display: flex;
-    flex-direction: column;
+#form-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .form-label {
-    color: rgb(130, 77, 77);
-    font-size: 1.25em;
-    margin-bottom: 0.2em;
+  color: rgb(130, 77, 77);
+  font-size: 1.25em;
+  margin-bottom: 0.25em;
 }
 
 .form-input {
-    color: rgb(130, 77, 77);
-    margin-bottom: 0.75em;
-    font-size: 1.5em;
+  color: rgb(130, 77, 77);
+  margin-bottom: 0.75em;
+  font-size: 1.5em;
 }
 
 .form-input:focus {
-    outline-color: rgb(130, 77, 77);
+  outline-color: rgb(130, 77, 77);
 }
 
 #location {
-    font-size: 1em;
+  font-size: 1.25em;
 }
 
 #submit {
-    font-size: 1.25em;
-    font-weight: 600;
-    color: rgb(130, 77, 77);
-    width: 30%;
-    align-self: center;
-    border: solid rgb(130, 77, 77) 0.15em;
-    border-radius: 0.25em;
-    background-color: rgb(255, 255, 255);
+  font-size: 1.25em;
+  font-weight: 600;
+  color: rgb(130, 77, 77);
+  width: 30%;
+  align-self: center;
+  border: solid rgb(130, 77, 77) 0.15em;
+  border-radius: 0.25em;
+  background-color: rgb(255, 255, 255);
 }
 
 #submit:hover {
-    color: rgb(255, 255, 255);
-    background-color: rgb(130, 77, 77);
-    font-size: 1.5em;
+  color: rgb(255, 255, 255);
+  background-color: rgb(130, 77, 77);
 }
 
 /* cards section */
 #travel-plan-cards {
-    background-color: rgb(255, 255, 255);
-    grid-area: cards;
-    box-shadow: 0.5em 0.5em 1em rgb(125, 64, 64);
-    border-radius: 0.25em;
-    padding: 0.5em;
-    border-top: dashed rgb(130, 77, 77) 0.2em;
+  background-color: rgb(255, 255, 255);
+  grid-area: cards;
+  box-shadow: 0.5em 0.5em 1em rgb(125, 64, 64);
+  border-radius: 0.25em;
+  padding: 0.5em;
+  border-top: dashed rgb(130, 77, 77) 0.2em;
 }
 
 #card-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    padding: 2em 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 2em 2em;
 }
 
 .card {
-    border-radius: 0.15em;
-    box-shadow: -0.1em 0.2em 0.75em rgb(162, 124, 124);
-    padding: 0.75em;
-    background-color: rgb(241, 236, 236);
+  border-radius: 0.15em;
+  box-shadow: -0.1em 0.2em 0.75em rgb(162, 124, 124);
+  padding: 0.75em;
+  background-color: rgb(241, 236, 236);
+  border: dashed rgb(216, 213, 213);
 }
 
 .card-pin {
-    width: 2em;
-    display: block;
-    margin: -0.75em auto;
+  width: 2em;
+  display: block;
+  margin: -0.3em auto;
+}
+
+.card-image {
+  width: 100%;
+  height: 45vh;
 }
 
 .card-info {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: solid rgb(130, 77, 77);
-    padding: 0.25em 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: solid rgb(130, 77, 77);
+  padding: 0.25em 0;
 }
 
 .card-title {
-    color: rgb(130, 77, 77);
-    font-weight: 600;
-    font-size: 1.5em;
+  color: rgb(130, 77, 77);
+  font-weight: 600;
+  font-size: 1.5em;
 }
 
 .card-status {
-    color: rgb(130, 77, 77);
-    border: solid rgb(130, 77, 77);
-    border-radius: 0.5em;
-    font-weight: 600;
-    font-size: 1em;
-    padding: 0.25em;
+  color: rgb(130, 77, 77);
+  border: solid rgb(130, 77, 77);
+  border-radius: 0.5em;
+  font-weight: 600;
+  font-size: 1em;
+  padding: 0.25em;
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 .card-status--complete {
-    color: rgb(255, 255, 255);
-    border: solid rgb(97, 157, 111);
-    background-color: rgb(97, 157, 111);
-    border-radius: 0.5em;
-    font-weight: 600;
-    font-size: 1em;
-    padding: 0.25em;
+  color: rgb(255, 255, 255);
+  border: solid rgb(97, 157, 111);
+  background-color: rgb(97, 157, 111);
 }
 
 .card-status--in-progress {
-    color: rgb(255, 255, 255);
-    border: solid rgb(217, 220, 94);
-    background-color: rgb(217, 220, 94);
-    border-radius: 0.5em;
-    font-weight: 600;
-    font-size: 1em;
-    padding: 0.25em;
+  color: rgb(255, 255, 255);
+  border: solid rgb(217, 220, 94);
+  background-color: rgb(217, 220, 94);
 }
 
 .card-status--not-started {
-    color: rgb(255, 255, 255);
-    border: solid rgb(189, 189, 189);
-    background-color: rgb(189, 189, 189);
-    border-radius: 0.5em;
-    font-weight: 600;
-    font-size: 1em;
-    padding: 0.25em;
+  color: rgb(255, 255, 255);
+  border: solid rgb(189, 189, 189);
+  background-color: rgb(189, 189, 189);
+  border-radius: 0.5em;
+  font-weight: 600;
+  font-size: 1em;
+  padding: 0.25em;
+}
+
+.card-weather-info {
+  margin: 0.5em 0;
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
+.minTemp {
+  color: rgb(30, 144, 255);
+}
+
+.maxTemp {
+  color: orangered;
+}
+
+.card-duration {
+  border-top: solid;
+  padding-top: 0.5em;
+  font-size: 1.25em;
+  font-style: italic;
+  font-weight: 600;
+  color: rgb(130, 77, 77);
 }
 
 /* media query section */
-@media (min-width: 600px) and (max-width:900px) {
+@media (min-width: 600px) and (max-width: 900px) {
+  #card-container {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 
+  .card {
+    width: 48%;
+  }
 }
 
-@media (min-width:901px) {
+@media (min-width: 901px) {
+  #main-layout {
+    grid-template-areas: "form cards";
+    grid-template-rows: auto;
+    grid-template-columns: 30%;
+    gap: 1em 1em;
+  }
 
+  #travel-form {
+    border-top: none;
+    border-left: dashed rgb(130, 77, 77) 0.2em;
+    height: 95vh;
+  }
+
+  #submit {
+    width: 50%;
+  }
+
+  #travel-plan-cards {
+    border-top: none;
+    border-left: dashed rgb(130, 77, 77) 0.2em;
+    height: 95vh;
+    overflow-y: scroll;
+  }
+
+  #card-container {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    width: 48%;
+  }
+
+  .card-image {
+    height: 30vh;
+  }
 }

@@ -1,11 +1,14 @@
+import { handleUI, addTravelPlan, getGeoInfo, calculateTripDuration } from './js/app'
 import './styles/resets.scss'
 import './styles/style.scss'
 import pinIcon from './images/pushpin.png'
 
-let pinImages = document.getElementsByClassName("card-pin");
-
-for(let i = 0; i < pinImages.length; i++){
-    pinImages[i].src = pinIcon;
-}
-
 alert("I Exist!")
+
+export {
+    handleUI,
+    addTravelPlan,
+    getGeoInfo,
+    calculateTripDuration,
+    pinIcon,
+}
