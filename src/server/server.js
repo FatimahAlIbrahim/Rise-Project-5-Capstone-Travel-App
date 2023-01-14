@@ -1,4 +1,4 @@
-travelPlan = [];
+const travelPlan = [];
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -6,9 +6,11 @@ dotenv.config();
 var path = require("path");
 const express = require("express");
 
-/*var api = {
-    application_key: process.env.API_KEY
-  };*/
+var api = {
+    geoname_key: process.env.GEONAME_KEY,
+    weather_key: process.env.WEATHER_KEY,
+    image_key: process.env.IMAGE_KEY
+  };
 
 const app = express();
 
@@ -30,9 +32,9 @@ app.listen(8080, function () {
   console.log("Example app listening on port 8080!");
 });
 
-/*app.get('/apiKey', function (req, res) {
+app.get('/apiKey', function (req, res) {
     res.send(api)
-})*/
+});
 
 // Get routes
 app.get("/getTravelPlan", (req, res) => {
@@ -66,8 +68,6 @@ const sortByDate = (a, b) => {
       }
       else {
         return 0;
-      }
-    
+      } 
   }
-  
 };

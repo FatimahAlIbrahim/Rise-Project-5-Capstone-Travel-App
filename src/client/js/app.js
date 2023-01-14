@@ -1,3 +1,6 @@
+// global variable for api keys
+let keys = {};
+
 // make the dates minimum to be today
 let startDateInput = document.getElementById("start-date");
 let endDateInput = document.getElementById("end-date");
@@ -13,6 +16,7 @@ submitButton.addEventListener("click", addTravelPlan);
 window.addEventListener("load", handleUI);
 
 function handleUI() {
+  getAPIKeys("/apiKey");
   getTravelPlans("/getTravelPlan").then((data) => {
     let cardContainer = document.getElementById("card-container");
     cardContainer.innerHTML = "";
@@ -159,7 +163,7 @@ const calculateTripDuration = (startDate, endDate) => {
 // get the country, lat, and long of the travel location
 const getGeoInfo = async (location) => {
   const res = await fetch(
-    `http://api.geonames.org/search?name_equals=${location}&username=fatimah_al_ibrahim&type=json`
+    `http://api.geonames.org/search?name_equals=${location}&username=${keys.geoname_key}&type=json`
   );
   try {
     const data = await res.json();
@@ -172,7 +176,7 @@ const getGeoInfo = async (location) => {
 // get the weather of the travel location
 const getWeatherInfo = async (lat, lng, country, date) => {
   const res = await fetch(
-    `https://api.weatherbit.io/v2.0/forecast/daily?key=190962442a2d41999f2378737eaf6f57&lat=${lat}&lon=${lng}&country=${country}`
+    `https://api.weatherbit.io/v2.0/forecast/daily?key=${keys.weather_key}&lat=${lat}&lon=${lng}&country=${country}`
   );
   try {
     const data = await res.json();
@@ -198,7 +202,7 @@ const getImage = async (city, country) => {
     searchTerm = encodeURI(country);
   }
   const res = await fetch(
-    `https://pixabay.com/api/?key=32823831-8caf9dac128dcb3770c88a31a&q=${searchTerm}&category=places`
+    `https://pixabay.com/api/?key=${keys.image_key}&q=${searchTerm}&category=places`
   );
   try {
     const data = await res.json();
@@ -244,4 +248,14 @@ const getTravelPlans = async (url) => {
   }
 };
 
+// get the travel plans from the server
+const getAPIKeys = async (url) => {
+    const res = await fetch(url);
+    try {
+      const data = await res.json();
+      keys = data;
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
 export { handleUI, addTravelPlan, getGeoInfo, calculateTripDuration };
