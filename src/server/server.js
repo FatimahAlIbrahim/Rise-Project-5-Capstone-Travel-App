@@ -6,10 +6,16 @@ dotenv.config();
 var path = require("path");
 const express = require("express");
 
-var api = {
+/*var api = {
   geoname_key: process.env.GEONAME_KEY,
   weather_key: process.env.WEATHER_KEY,
   image_key: process.env.IMAGE_KEY,
+};*/
+
+var api = {
+  geoname_key: "fatimah_al_ibrahim",
+  weather_key: "190962442a2d41999f2378737eaf6f57",
+  image_key: "32823831-8caf9dac128dcb3770c88a31a",
 };
 
 const app = express();
